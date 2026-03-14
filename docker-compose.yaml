@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: dealers
+      POSTGRES_PASSWORD: dH4!24H.bds&ds$2@qS
+    ports:
+      - "5434:5432"
+    volumes:
+      - db:/var/lib/postgresql
+
+volumes:
+  db:

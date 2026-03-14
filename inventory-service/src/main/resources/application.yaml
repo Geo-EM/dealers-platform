@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: inventory-service
+  datasource:
+    url: jdbc:postgresql://localhost:5434/inventory_db
+    username: dealers
+    password: dH4!24H.bds&ds$2@qS
+  security:
+    user:
+      name: admin
+      password: admin123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      INDENT_OUTPUT: true

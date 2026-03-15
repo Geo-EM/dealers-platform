@@ -13,4 +13,6 @@ public interface DealerRepository extends JpaRepository<Dealer, UUID> {
   Optional<Dealer> findByIdAndTenantId(UUID id, String tenantId);
 
   List<Dealer> findAllByTenantId(String tenantId);
+
+  long countBySubscriptionType(Dealer.SubscriptionType type);
 }

@@ -31,4 +31,8 @@ public class DealerService {
   public List<Dealer> getAllDealer() {
     return dealerRepository.findAllByTenantId(TenantContext.getTenantId());
   }
+
+  public void deleteDealer(UUID id) {
+    dealerRepository.deleteById(id);
+  }
 }

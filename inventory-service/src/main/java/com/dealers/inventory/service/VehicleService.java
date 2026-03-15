@@ -34,4 +34,7 @@ public class VehicleService {
     return vehicleRepository.findAllByTenantId(TenantContext.getTenantId());
   }
 
+  public void deleteVehicle(UUID id) {
+    vehicleRepository.deleteById(id);
+  }
 }

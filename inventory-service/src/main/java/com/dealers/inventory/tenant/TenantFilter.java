@@ -17,6 +17,12 @@ public class TenantFilter extends OncePerRequestFilter {
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
       throws ServletException, IOException {
 
+    String path = request.getRequestURI();
+    if (path.startsWith("/swagger-ui") || path.startsWith("/v3/api-docs")) {
+      filterChain.doFilter(request, response);
+      return;
+    }
+
     String tenantId = request.getHeader("X-Tenant-Id");
     if (tenantId == null || tenantId.isBlank()) {
       response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing X-Tenant-Id header");

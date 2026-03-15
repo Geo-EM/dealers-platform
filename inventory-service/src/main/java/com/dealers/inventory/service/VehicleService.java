@@ -3,15 +3,16 @@ package com.dealers.inventory.service;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import com.dealers.inventory.entity.Dealer.SubscriptionType;
 import com.dealers.inventory.entity.Vehicle;
 import com.dealers.inventory.repository.VehicleRepository;
 import com.dealers.inventory.tenant.TenantContext;
 
-import io.swagger.v3.oas.annotations.servers.Server;
 import lombok.RequiredArgsConstructor;
 
-@Server
+@Service
 @RequiredArgsConstructor
 public class VehicleService {
   private final VehicleRepository vehicleRepository;

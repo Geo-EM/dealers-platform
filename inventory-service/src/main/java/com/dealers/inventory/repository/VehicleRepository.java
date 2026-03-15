@@ -17,7 +17,7 @@ public interface VehicleRepository extends JpaRepository<Vehicle, UUID> {
 
   List<Vehicle> findAllByTenantId(String tenantId);
 
-  @Query("SELECT v FROM Vehicle v WHERE v.tenantId = :tenantId AND v.subscriptionType = :subscription")
+  @Query("SELECT v FROM Vehicle v WHERE v.tenantId = :tenantId AND v.dealer.subscriptionType = :subscription")
   List<Vehicle> findAllByTenantIdAndDealerSubscription(@Param("tenantId") String tenantId,
       @Param("subscription") Dealer.SubscriptionType subscription);
 

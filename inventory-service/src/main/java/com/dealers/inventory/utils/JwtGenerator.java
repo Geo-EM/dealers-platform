@@ -20,3 +20,4 @@ public class JwtGenerator {
     System.out.println("JWT Token: " + jwt);
   }
 }
+// JWT: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0LXVzZXIiLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE3NzM2MDg3MDB9.eDhOsdh-mDldWSA-9wDmd7hen-Qey03pT2ldlL25gKU

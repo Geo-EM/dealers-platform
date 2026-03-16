@@ -26,6 +26,7 @@ public class PaymentService {
       return existingTransaction.get();
     }
 
+    // paymentTransaction.setId(UUID.randomUUID());
     paymentTransaction.setTenantId(TenantContext.getTenantId());
     paymentTransaction.setRequestId(idempotencyKey);
     paymentTransaction.setStatus(PaymentTransaction.Status.PENDING);

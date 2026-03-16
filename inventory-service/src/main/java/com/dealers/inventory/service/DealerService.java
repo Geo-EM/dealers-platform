@@ -18,6 +18,10 @@ public class DealerService {
   private final DealerRepository dealerRepository;
 
   public Dealer createDealer(Dealer dealer) {
+    if (!dealer.getTenantId().equals(TenantContext.getTenantId())) {
+      throw new RuntimeException("Cross tenant access");
+    }
+
     dealer.setTenantId(TenantContext.getTenantId());
     return dealerRepository.save(dealer);
 
@@ -33,6 +37,10 @@ public class DealerService {
   }
 
   public void deleteDealer(UUID id) {
-    dealerRepository.deleteById(id);
+
+    Dealer dealer = dealerRepository.findByIdAndTenantId(id, TenantContext.getTenantId())
+        .orElseThrow(() -> new RuntimeException("Dealer not found or cross-tenant access blocked"));
+
+    dealerRepository.delete(dealer);
   }
 }

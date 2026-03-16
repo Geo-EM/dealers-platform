@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import org.springframework.data.jpa.domain.Specification;
 
+import com.dealers.inventory.entity.Dealer;
 import com.dealers.inventory.entity.Vehicle;
 import com.dealers.inventory.entity.Vehicle.Status;
 
@@ -33,7 +34,7 @@ public class VehicleSpecification {
     return (root, query, cb) -> cb.equal(root.get("tenantId"), tenantId);
   }
 
-  public static Specification<Vehicle> dealerHasSubscription(String subscriptionType) {
+  public static Specification<Vehicle> dealerHasSubscription(Dealer.SubscriptionType subscriptionType) {
     return (root, query, cb) -> {
       if (subscriptionType == null)
         return null;

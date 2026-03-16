@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dealers.inventory.entity.Dealer;
 import com.dealers.inventory.entity.Vehicle;
 import com.dealers.inventory.service.VehicleService;
 
@@ -49,9 +50,9 @@ public class VehicleController {
       @RequestParam(required = false) Vehicle.Status status,
       @RequestParam(required = false) BigDecimal priceMin,
       @RequestParam(required = false) BigDecimal priceMax,
-      @RequestParam(required = false) String subscription,
+      @RequestParam(required = false) Dealer.SubscriptionType subscription,
       Pageable pageable) {
-    return vehicleService.getVehicles("", model, status, priceMin, priceMax, subscription, pageable);
+    return vehicleService.getVehicles(tenantId, model, status, priceMin, priceMax, subscription, pageable);
   }
 
   @PatchMapping("/{id}")
@@ -60,7 +61,7 @@ public class VehicleController {
 
     String model = vehicleData.getModel() != null ? vehicleData.getModel() : vehicle.getModel();
     BigDecimal price = vehicleData.getPrice() != null ? vehicleData.getPrice() : vehicle.getPrice();
-    Vehicle.Status status = vehicleData.getStatus() != null ? vehicle.getStatus()
+    Vehicle.Status status = vehicleData.getStatus() != null ? vehicleData.getStatus()
         : vehicle.getStatus();
 
     vehicle.setModel(model);

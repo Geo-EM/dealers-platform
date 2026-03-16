@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.dealers.inventory.entity.Dealer;
 import com.dealers.inventory.entity.Vehicle;
 import com.dealers.inventory.repository.VehicleRepository;
 import com.dealers.inventory.repository.VehicleSpecification;
@@ -21,6 +22,10 @@ public class VehicleService {
   private final VehicleRepository vehicleRepository;
 
   public Vehicle createVehicle(Vehicle vehicle) {
+    if (!vehicle.getDealer().getTenantId().equals(TenantContext.getTenantId())) {
+      throw new RuntimeException("Cross tenant dealer access");
+    }
+
     vehicle.setTenantId(TenantContext.getTenantId());
     return vehicleRepository.save(vehicle);
   }
@@ -44,7 +49,7 @@ public class VehicleService {
       Vehicle.Status status,
       BigDecimal priceMin,
       BigDecimal priceMax,
-      String subscription,
+      Dealer.SubscriptionType subscription,
       Pageable pageable) {
 
     Specification<Vehicle> spec = Specification
@@ -58,6 +63,10 @@ public class VehicleService {
   }
 
   public void deleteVehicle(UUID id) {
-    vehicleRepository.deleteById(id);
+    Vehicle vehicle = vehicleRepository
+        .findByIdAndTenantId(id, TenantContext.getTenantId())
+        .orElseThrow(() -> new RuntimeException("Vehicle not found or cross-tenant access blocked"));
+
+    vehicleRepository.delete(vehicle);
   }
 }

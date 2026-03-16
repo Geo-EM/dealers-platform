@@ -14,5 +14,5 @@ public interface DealerRepository extends JpaRepository<Dealer, UUID> {
 
   List<Dealer> findAllByTenantId(String tenantId);
 
-  long countBySubscriptionType(Dealer.SubscriptionType type);
+  long countByTenantIdAndSubscriptionType(String tenantId, Dealer.SubscriptionType subscriptionType);
 }

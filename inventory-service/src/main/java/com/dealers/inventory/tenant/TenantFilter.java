@@ -29,9 +29,8 @@ public class TenantFilter extends OncePerRequestFilter {
       return;
     }
 
-    TenantContext.setTenantId(tenantId);
-
     try {
+      TenantContext.setTenantId(tenantId);
       filterChain.doFilter(request, response);
     } finally {
       TenantContext.clear();

@@ -18,10 +18,6 @@ public class DealerService {
   private final DealerRepository dealerRepository;
 
   public Dealer createDealer(Dealer dealer) {
-    if (!dealer.getTenantId().equals(TenantContext.getTenantId())) {
-      throw new RuntimeException("Cross tenant access");
-    }
-
     dealer.setTenantId(TenantContext.getTenantId());
     return dealerRepository.save(dealer);
 

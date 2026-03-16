@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.dealers.inventory.entity.Dealer;
 import com.dealers.inventory.entity.Vehicle;
+import com.dealers.inventory.repository.DealerRepository;
 import com.dealers.inventory.repository.VehicleRepository;
 import com.dealers.inventory.repository.VehicleSpecification;
 import com.dealers.inventory.tenant.TenantContext;
@@ -20,19 +21,22 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class VehicleService {
   private final VehicleRepository vehicleRepository;
+  private final DealerRepository dealerRepository;
 
   public Vehicle createVehicle(Vehicle vehicle) {
-    if (!vehicle.getDealer().getTenantId().equals(TenantContext.getTenantId())) {
+    // getReferenceById to avoid full query
+    Dealer dealerRef = dealerRepository.getReferenceById(vehicle.getDealer().getId());
+
+    // Tenant check
+    if (!dealerRef.getTenantId().equals(TenantContext.getTenantId())) {
       throw new RuntimeException("Cross tenant dealer access");
     }
 
     vehicle.setTenantId(TenantContext.getTenantId());
-    return vehicleRepository.save(vehicle);
-  }
+    vehicle.setDealer(dealerRef);
 
-  public Vehicle getVehicle(UUID id) {
-    return vehicleRepository.findByIdAndTenantId(id, TenantContext.getTenantId())
-        .orElseThrow(() -> new RuntimeException("Vehicle not found or cross-tenant access blocked"));
+    // Save and return vehicle
+    return vehicleRepository.save(vehicle);
   }
 
   // public List<Vehicle> getVehicles(String subscription) {
@@ -43,6 +47,12 @@ public class VehicleService {
   // }
   // return vehicleRepository.findAllByTenantId(TenantContext.getTenantId());
   // }
+
+  public Vehicle getVehicle(UUID id) {
+    return vehicleRepository
+        .findByIdAndTenantId(id, TenantContext.getTenantId())
+        .orElseThrow(() -> new RuntimeException("Vehicle not found or cross-tenant access blocked"));
+  }
 
   public Page<Vehicle> getVehicles(String tenantId,
       String model,

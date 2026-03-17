@@ -25,11 +25,13 @@ public class TenantFilter extends OncePerRequestFilter {
 
     String tenantId = request.getHeader("X-Tenant-Id");
     if (tenantId == null || tenantId.isBlank()) {
-      response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing X-Tenant-Id header");
+      response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+      response.setContentType("application/json");
+      response.getWriter().write("{\"error\": \"Missing X-Tenant-Id header\"}");
+      response.flushBuffer();
       return;
     }
 
-    
     try {
       TenantContext.setTenantId(tenantId);
       filterChain.doFilter(request, response);

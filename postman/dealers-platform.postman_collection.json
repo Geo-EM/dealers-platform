@@ -19,23 +19,23 @@
                 "header": [
                   {
                     "key": "Authorization",
-                    "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0LXVzZXIiLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE3NzM2MDg3MDB9.eDhOsdh-mDldWSA-9wDmd7hen-Qey03pT2ldlL25gKU",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0LXVzZXIiLCJyb2xlcyI6IlVTRVIiLCJ0ZW5hbnRJZCI6InRlbmFudDUiLCJpYXQiOjE3NzM2NzUzNjZ9.dzl9rTy8K2k0EkANChLwwcEvgjJvFkg8QIdueloWK14",
                     "type": "text"
                   },
                   {
                     "key": "X-Tenant-Id",
-                    "value": "tenant1",
+                    "value": "tenant5",
                     "type": "text"
                   }
                 ],
                 "url": {
-                  "raw": "{{inventory_base_url}}/dealers/d7c971b3-b780-4e0f-8d6a-e9ecb0e03615",
+                  "raw": "{{inventory_base_url}}/dealers/d199f436-2e83-4a4e-9a1e-f75973ca3776",
                   "host": [
                     "{{inventory_base_url}}"
                   ],
                   "path": [
                     "dealers",
-                    "d7c971b3-b780-4e0f-8d6a-e9ecb0e03615"
+                    "d199f436-2e83-4a4e-9a1e-f75973ca3776"
                   ]
                 }
               },
@@ -90,7 +90,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"New Cars\",\n  \"email\": \"dealer5s@example.com\",\n  \"subscriptionType\": \"BASIC\"\n}",
+                  "raw": "{\n  \"name\": \"New Cars\",\n  \"email\": \"dealers1@example.com\",\n  \"subscriptionType\": \"BASIC\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -104,6 +104,47 @@
                   ],
                   "path": [
                     "dealers"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update-dealer",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0LXVzZXIiLCJyb2xlcyI6IlVTRVIiLCJ0ZW5hbnRJZCI6InRlbmFudDUiLCJpYXQiOjE3NzM2NzUzNjZ9.dzl9rTy8K2k0EkANChLwwcEvgjJvFkg8QIdueloWK14",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant-Id",
+                    "value": "tenant5",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"New Cars\",\n  \"email\": \"dealers1@example.com\",\n  \"subscriptionType\": \"PREMIUM\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{inventory_base_url}}/dealers/d199f436-2e83-4a4e-9a1e-f75973ca3776",
+                  "host": [
+                    "{{inventory_base_url}}"
+                  ],
+                  "path": [
+                    "dealers",
+                    "d199f436-2e83-4a4e-9a1e-f75973ca3776"
                   ]
                 }
               },
@@ -132,7 +173,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"dealer\": {\n    \"id\": \"d5432841-7e8d-4684-8d19-0a1a3f88c4d0\"\n  },\n  \"model\": \"Camry8\",\n  \"price\": 26000,\n  \"status\": \"AVAILABLE\"\n}",
+                  "raw": "{\n  \"dealer\": {\n    \"id\": \"76d213ca-3d14-4cad-b08e-76a6be6bf006\"\n  },\n  \"model\": \"Camry20\",\n  \"price\": 26000,\n  \"status\": \"AVAILABLE\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -169,7 +210,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"model\": \"Camry7\",\n  \"price\": 26000,\n  \"status\": \"SOLD\"\n}",
+                  "raw": "{\n  \"model\": \"Camry19\",\n  \"price\": 26000,\n  \"status\": \"SOLD\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -177,13 +218,13 @@
                   }
                 },
                 "url": {
-                  "raw": "{{inventory_base_url}}/vehicles/bd2c31ff-ddb4-47b1-8ae7-f086aa8291ae",
+                  "raw": "{{inventory_base_url}}/vehicles/b297bfb6-06c4-4d1d-8654-3f056bae8c8a",
                   "host": [
                     "{{inventory_base_url}}"
                   ],
                   "path": [
                     "vehicles",
-                    "bd2c31ff-ddb4-47b1-8ae7-f086aa8291ae"
+                    "b297bfb6-06c4-4d1d-8654-3f056bae8c8a"
                   ]
                 }
               },
@@ -206,13 +247,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{inventory_base_url}}/vehicles/acebee8a-940b-4c40-a1f4-6e3af06ffef9",
+                  "raw": "{{inventory_base_url}}/vehicles/b297bfb6-06c4-4d1d-8654-3f056bae8c8a",
                   "host": [
                     "{{inventory_base_url}}"
                   ],
                   "path": [
                     "vehicles",
-                    "acebee8a-940b-4c40-a1f4-6e3af06ffef9"
+                    "b297bfb6-06c4-4d1d-8654-3f056bae8c8a"
                   ]
                 }
               },
@@ -235,13 +276,13 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{inventory_base_url}}/vehicles/c5cf4072-d5ff-4f17-906e-5e66d94dae56",
+                  "raw": "{{inventory_base_url}}/vehicles/b297bfb6-06c4-4d1d-8654-3f056bae8c8a",
                   "host": [
                     "{{inventory_base_url}}"
                   ],
                   "path": [
                     "vehicles",
-                    "c5cf4072-d5ff-4f17-906e-5e66d94dae56"
+                    "b297bfb6-06c4-4d1d-8654-3f056bae8c8a"
                   ]
                 }
               },
@@ -264,7 +305,7 @@
                   }
                 ],
                 "url": {
-                  "raw": "{{inventory_base_url}}/vehicles?status=AVAILABLE&priceMin=20000&priceMax=30000&page=0&size=10",
+                  "raw": "{{inventory_base_url}}/vehicles?model=Camry20&status=AVAILABLE&priceMin=20000&priceMax=100000&page=0&size=10&subscription=BASIC",
                   "host": [
                     "{{inventory_base_url}}"
                   ],
@@ -274,8 +315,7 @@
                   "query": [
                     {
                       "key": "model",
-                      "value": "Camry",
-                      "disabled": true
+                      "value": "Camry20"
                     },
                     {
                       "key": "status",
@@ -287,7 +327,7 @@
                     },
                     {
                       "key": "priceMax",
-                      "value": "30000"
+                      "value": "100000"
                     },
                     {
                       "key": "page",
@@ -296,6 +336,10 @@
                     {
                       "key": "size",
                       "value": "10"
+                    },
+                    {
+                      "key": "subscription",
+                      "value": "BASIC"
                     }
                   ]
                 }
@@ -405,14 +449,14 @@
               }
             ],
             "url": {
-              "raw": "{{payment_base_url}}/api/payments/21191e20-a048-422c-816e-762ba1613ac0",
+              "raw": "{{payment_base_url}}/api/payments/4cea376f-81e0-46b6-b130-901553b24422",
               "host": [
                 "{{payment_base_url}}"
               ],
               "path": [
                 "api",
                 "payments",
-                "21191e20-a048-422c-816e-762ba1613ac0"
+                "4cea376f-81e0-46b6-b130-901553b24422"
               ]
             }
           },

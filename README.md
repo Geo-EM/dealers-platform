@@ -87,6 +87,7 @@ http://localhost:8082/swagger-ui/index.html
 │
 └── postman
     └── dealers-platform.postman_collection.json
+    └── dealers-platform.postman_environment.json
 ```
 
 ---
